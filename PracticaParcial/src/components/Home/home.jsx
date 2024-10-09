@@ -1,7 +1,9 @@
 import React, {useEffect, useState} from "react";
 import Card from "../Card/card";
 import { useGames } from "../../contexts/games";
-import { dataFetcher } from "../../shared/server";
+import { getData } from "../../shared/server";
+import Modal from "../Modal/modal";
+import Styles from './index.module.css';
 
 const Home = () => {
     const { games, setGames } = useGames();
@@ -10,7 +12,7 @@ const Home = () => {
     useEffect(() => {
         const fetchDatos = async () => {
           try {
-            const datos = await dataFetcher('http://localhost:3000/api/games');
+            const datos = await getData('http://localhost:3000/api/games');
             setGames(datos);
             console.log(datos);
           } catch (e) {
@@ -29,18 +31,18 @@ const Home = () => {
         setOpenAddModal(false);
       }
     return (
-        <div>
+        <div className={Styles.homeContainer}>
             <h1>Practica Parcial</h1>
-            <button onClick={openModal}>Agregar juego</button>
+            <button className={Styles.addButton} onClick={openModal}>Agregar juego</button>
             {openAddModal && (
                 <Modal
                     cerrarModal={closeModal}
                 />
             )}
-            <ul className="gamesList">
+            <ul className={Styles.gamesList}>
                 {games.map(game => (
                     <li key={game.id}>
-                        <Card name={game.title} />
+                        <Card game={game} />
                     </li>
                 ))}
             </ul>

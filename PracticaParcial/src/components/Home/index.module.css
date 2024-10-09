@@ -1,5 +1,34 @@
 .gamesList {
     display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
+    overflow-x: auto;
+    padding: 0;
+    margin: 0;
+    white-space: nowrap;
+    gap: 20px;
+    list-style: none;
+}
+
+.homeContainer {
+    overflow-x: hidden;
+    overflow-y: hidden;
+    max-width: 100%;
+    margin: 0 auto; 
+    padding: 20px; 
+    text-align: center; 
+}
+
+.addButton {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: background-color 0.3s;
+}
+
+.addButton:hover {
+    background-color: #0056b3;
 }

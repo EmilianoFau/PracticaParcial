@@ -1,8 +1,9 @@
 import React, {useState} from "react";
 import { useGames } from "../../contexts/games";
 import { postData } from "../../shared/server";
+import Styles from './index.module.css';
 
-const Modal = ({ game, cerrarModal }) => {
+const Modal = ({ cerrarModal }) => {
     const { setGames } = useGames();
 
     const [categories, setCategories] = useState('');
@@ -16,7 +17,6 @@ const Modal = ({ game, cerrarModal }) => {
             description: description,
             players: players,
             categories: categories,
-            id: game.id
         }
     }
 
@@ -27,22 +27,23 @@ const Modal = ({ game, cerrarModal }) => {
         console.log('Nuevo juego antes de agregar: ', newGame);
 
         try {
-            const response = await postData('http://localhost:3000/api/games');
+            const response = await postData('http://localhost:3000/api/games', newGame);
+            const addedGame = response[response.length - 1];
 
-            if (response.id) {
-                console.log('Juego agregado: ', response);
-                setGames((prevGames) => [...prevGames, response]);
+            if (addedGame && addedGame.id) {
+                console.log('Juego agregado: ', addedGame);
+                setGames((prevGames) => [...prevGames, addedGame]);
             }
 
             cerrarModal();
         } catch(error) {
             console.error("Error: ", error);
-         }
+        }
     }
 
     return (
-        <div className="modal">
-            <h2>Agregar juego</h2>
+        <div className={`${Styles.modal} ${Styles.overlay}`}>
+            <h2 className={Styles.title}>Agregar juego</h2>
             <form onSubmit={handleAgregarJuego}>
                 <div>
                     <label>Title</label>
@@ -71,9 +72,10 @@ const Modal = ({ game, cerrarModal }) => {
                         <input type="text" placeholder="Game players" value={players} onChange={(e) => setPlayers(e.target.value)} />
                     </div>
                 </div>
-
-                <button type="submit">Agregar</button>
-                <button onClick={cerrarModal}>Cancelar</button>
+                <div className={Styles.buttons}>
+                    <button type="submit" className={Styles.modalButton}>Agregar</button>
+                    <button onClick={cerrarModal} className={`${Styles.modalButton} ${Styles.cancelButton}`}>Cancelar</button>
+                </div>
             </form>
         </div>
     )
