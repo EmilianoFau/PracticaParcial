@@ -42,41 +42,43 @@ const Modal = ({ cerrarModal }) => {
     }
 
     return (
-        <div className={`${Styles.modal} ${Styles.overlay}`}>
-            <h2 className={Styles.title}>Agregar juego</h2>
-            <form onSubmit={handleAgregarJuego}>
-                <div>
-                    <label>Title</label>
+        <div className={Styles.overlay}>
+            <div className={Styles.modal}>
+                <h2 className={Styles.title}>Agregar juego</h2>
+                <form onSubmit={handleAgregarJuego}>
                     <div>
-                        <input type="text" placeholder="Game title" value={title} onChange={(e) => setTitle(e.target.value)} />
+                        <label>Title</label>
+                        <div>
+                            <input type="text" placeholder="Game title" value={title} onChange={(e) => setTitle(e.target.value)} />
+                        </div>
                     </div>
-                </div>
 
-                <div>
-                    <label>Description</label>
                     <div>
-                        <input type="text" placeholder="Game description" value={description} onChange={(e) => setDescription(e.target.value)} />
+                        <label>Description</label>
+                        <div>
+                            <input type="text" placeholder="Game description" value={description} onChange={(e) => setDescription(e.target.value)} />
+                        </div>
                     </div>
-                </div>
 
-                <div>
-                    <label>Categories</label>
                     <div>
-                        <input type="text" placeholder="Game categories" value={categories} onChange={(e) => setCategories(e.target.value)} />
+                        <label>Categories</label>
+                        <div>
+                            <input type="text" placeholder="Game categories" value={categories} onChange={(e) => setCategories(e.target.value)} />
+                        </div>
                     </div>
-                </div>
 
-                <div>
-                    <label>Players</label>
                     <div>
-                        <input type="text" placeholder="Game players" value={players} onChange={(e) => setPlayers(e.target.value)} />
+                        <label>Players</label>
+                        <div>
+                            <input type="text" placeholder="Game players" value={players} onChange={(e) => setPlayers(e.target.value)} />
+                        </div>
                     </div>
-                </div>
-                <div className={Styles.buttons}>
-                    <button type="submit" className={Styles.modalButton}>Agregar</button>
-                    <button onClick={cerrarModal} className={`${Styles.modalButton} ${Styles.cancelButton}`}>Cancelar</button>
-                </div>
-            </form>
+                    <div className={Styles.buttons}>
+                        <button type="submit" className={Styles.modalButton}>Agregar</button>
+                        <button onClick={cerrarModal} className={`${Styles.modalButton} ${Styles.cancelButton}`}>Cancelar</button>
+                    </div>
+                </form>
+            </div>
         </div>
     )
 }

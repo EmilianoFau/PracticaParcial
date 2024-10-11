@@ -25,29 +25,31 @@ const Details = () => {
     }
 
     return (
-        <div>
-            <button onClick={handleBackClick}>Back</button>
+        <div className={Styles.detailsContainer}>
+            <div className={Styles.backButtonContainer}>
+                <button onClick={handleBackClick} className={Styles.backButton}>Back</button>
+            </div>
             {currentGame ? (
                 <>
-                    <div>
-                    <h2>Nombre</h2>
-                    <h3>{currentGame.title}</h3>
+                    <div className={Styles.infoContainer}>
+                    <h2 className={Styles.titles}>Nombre</h2>
+                    <h3 className={Styles.info}>{currentGame.title}</h3>
                     </div>
-                    <div>
-                        <h2>Descripción</h2>
-                        <h3>{currentGame.description}</h3>
+                    <div className={Styles.infoContainer}>
+                        <h2 className={Styles.titles}>Descripción</h2>
+                        <h3 className={Styles.info}>{currentGame.description}</h3>
                     </div>
-                    <div>
-                        <h2>Cantidad de jugadores</h2>
-                        <h3>{currentGame.players}</h3>
+                    <div className={Styles.infoContainer}>
+                        <h2 className={Styles.titles}>Cantidad de jugadores</h2>
+                        <h3 className={Styles.info}>{currentGame.players}</h3>
                     </div>
-                    <div>
-                        <h2>Categorías</h2>
-                        <h3>{currentGame.categories}</h3>
+                    <div className={Styles.infoContainer}>
+                        <h2 className={Styles.titles}>Categorías</h2>
+                        <h3 className={Styles.info}>{currentGame.categories}</h3>
                     </div>
                 </>
             ) : (
-                <p>Cargando juego...</p>
+                <p className={Styles.loading}>Cargando juego...</p>
             )}
         </div>
     )

@@ -1,20 +1,33 @@
 .gamesList {
     display: flex;
     overflow-x: auto;
-    padding: 0;
+    width: 90vw;
     margin: 0;
     white-space: nowrap;
     gap: 20px;
     list-style: none;
+    padding-bottom: 20px;
 }
 
 .homeContainer {
     overflow-x: hidden;
     overflow-y: hidden;
-    max-width: 100%;
+    box-sizing: border-box;
+    width: 100%;
     margin: 0 auto; 
     padding: 20px; 
     text-align: center; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.buttonContainer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: end;
 }
 
 .addButton {
@@ -27,6 +40,7 @@
     cursor: pointer;
     margin-bottom: 20px;
     transition: background-color 0.3s;
+    margin-right: 20px;
 }
 
 .addButton:hover {
